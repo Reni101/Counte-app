@@ -18,16 +18,15 @@ const CounterButton = (props: CounterButtonPropsType) => {
         <div className={"ButtonBox"}>
             <button onClick={onClickIncHandler}
                     disabled={props.counter > 4}
-                    className={"inc"}>inc
+                    className={"inc"}>
+                inc
             </button>
 
 
             <button onClick={onClickResetHandler}
                     className={"reset"}
-                    disabled={props.counter === 0}
-
-
-            >reset
+                    disabled={props.counter === 0}>
+                reset
             </button>
         </div>
     );
