@@ -1,13 +1,14 @@
 import React from 'react';
-import {CounterType} from "../Counter";
+
 
 type CounterNumberPropsType = {
-    counter: CounterType
+    counter: number
+    maxValue:number
 }
 
 const CounterNumber = (props: CounterNumberPropsType) => {
 
-    const NumberClass = props.counter < 5 ? "NumberBox" : "NumberBoxDisable";
+    const NumberClass = props.counter < props.maxValue ? "NumberBox" : "NumberBox NumberBoxDisable";
     return (
         <div className={NumberClass}>
             {props.counter}

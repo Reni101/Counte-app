@@ -1,43 +1,35 @@
 .MainBox {
+    display: block;
     margin: 50px auto;
     border: 1px solid black;
     width: 200px;
     height: 200px;
-    background-color: blueviolet;
+    background-color: #9c27b0;
     border-radius: 5px;
 }
 
 .NumberBox {
-    width: 150px;
+    width: 170px;
     height: 80px;
-    border: 1px solid yellow;
+    border: 1px solid #ffcf33;
     margin: 10px auto;
     border-radius: 5px;
-    background-color: gold;
+    background-color: #ffcf33;
     font-size: 3em;
     padding-top: 15px;
     text-align: center;
 }
 
 .NumberBoxDisable {
-    width: 150px;
-    height: 80px;
-    border: 1px solid yellow;
-    margin: 10px auto;
-    border-radius: 5px;
-    background-color: gold;
-    font-size: 3em;
-    padding-top: 15px;
-    text-align: center;
-    color: blueviolet;
+    color: #9c27b0;
     font-weight: bold;
 }
 
 .ButtonBox {
     display: flex;
-    width: 150px;
+    width: 170px;
     height: 50px;
-    border: 2px solid yellow;
+    border: 2px solid #ffcf33;
     margin: 0 auto;
     text-align: center;
     border-radius: 5px;
@@ -45,20 +37,48 @@
 
 }
 
-.ButtonBox .inc {
+.ButtonBox .UnButton {
     margin-top: 10px;
-    background-color: gold;
+    background-color: #ffcf33;
     width: 50px;
     height: 25px;
     border-radius: 5px;
 
 }
 
-.ButtonBox .reset {
-    margin-top: 10px;
 
-    background-color: gold;
-    width: 50px;
-    height: 25px;
+.SettingsMainBox {
+    display: block;
+    margin: 50px auto;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    background-color: #9c27b0;
     border-radius: 5px;
+}
+
+.SettingBox {
+    display: block;
+    width: 170px;
+    height: 80px;
+    border: 1px solid #ffcf33;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: #ffcf33;
+    padding-top: 15px;
+
+}
+.ValueString {
+    display: flex;
+    margin: 5px;
+    justify-content: space-around;
+
+}
+
+.InputNumber {
+    width: 50px;
+    height: 15px;
+}
+.InputNumberError {
+    background-color:rgba(255, 0, 0, 0.5);
 }

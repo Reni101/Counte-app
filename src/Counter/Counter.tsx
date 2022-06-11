@@ -1,74 +1,65 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import CounterNumber from "./CounterNumber/CounterNumber";
-import CounterButton from "./CounterButton/CounterButton";
-import SetValue from "./SetValue/SetValue";
-
-export type CounterType = number // 0 |1|2|3|4|5
-
-const Counter = () => {
-    let [counter, setCounter] = useState<CounterType>(0)
+import UniversalButton from "./CounterButton/UniversalButton";
 
 
+type CounterPropsType = {
+    changeSet: ()=>void
+    startValue: number
+    maxValue: number
+}
 
-    useEffect(() => {
-        localStorage.setItem("counterValue", JSON.stringify(counter))
-    }, [counter])
+const Counter = (props: CounterPropsType) => {
+    let [counter, setCounter] = useState<number>(props.startValue)
 
-    useEffect(() => {
-        let newValue = localStorage.getItem("counterValue")
-        if (newValue) {
-            let newNumberCounter = JSON.parse(newValue)
-            setCounter(newNumberCounter)
-        }
-    }, [])
-
-
+//====================  логика кнопак Inc + Reset===========================
     const inc = () => {
-        setCounter(counter + 1)
-
+        setCounter(Number(counter) + 1)
 
     }
     const reset = () => {
-        setCounter(counter = 0)
+        setCounter(counter = props.startValue)
+        localStorage.clear()
     }
+//============================== Логика Disabled кнопок ==================
+    const changeDisableReset = () => counter === props.startValue
+    const ResetButtonDisable = changeDisableReset()
 
-    /*    const setLocalStorage = () => {
-              localStorage.setItem("counterValue", JSON.stringify(counter))
-          }*/
+    const changeDisableInC = () => counter >= props.maxValue
+    const IncButtonDisable = changeDisableInC();
+// ==========================           ========================
 
-    /*      const getLocalStorage = () => {
-             let newValue = localStorage.getItem("counterValue")
-              if(newValue) {
-                  let newNumberCounter = JSON.parse(newValue)
-                  setCounter(newNumberCounter)
-              }
 
-          }
 
-          const clearLocalStorage = () => {
-              localStorage.clear()
-              setCounter(0)
-
-          }*/
-
+//====================== JSX ===================
 
     return (
-        <div>
+        <div className={"MainBox"}>
 
-            <CounterNumber counter={counter}/>
+            <CounterNumber counter={counter} maxValue = {props.maxValue}/>
 
-            <CounterButton
-                counter={counter}
-                inc={inc}
-                reset={reset}
-            />
+            <div className={"ButtonBox"}>
 
+                <UniversalButton
+                    callback={inc}
+                    title={"inc"}
+                    Disable={IncButtonDisable}
+                />
 
-            {/*         <SetValue
-                setLocalStorage={setLocalStorage}
-                getLocalStorage={getLocalStorage}
-                clearLocalStorage={clearLocalStorage}
-            />*/}
+                <UniversalButton
+                    callback={reset}
+                    title={"reset"}
+                    Disable={ResetButtonDisable}
+
+                />
+
+                <UniversalButton
+                    callback={props.changeSet}
+                    title={"set"}
+                    Disable={false}
+                />
+
+            </div>
         </div>
     );
 };
