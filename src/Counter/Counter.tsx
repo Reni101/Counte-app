@@ -1,25 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CounterNumber from "./CounterNumber/CounterNumber";
 import UniversalButton from "./CounterButton/UniversalButton";
 
 
 type CounterPropsType = {
-    changeSet: ()=>void
+    changeSet: () => void
     startValue: number
     maxValue: number
 }
 
 const Counter = (props: CounterPropsType) => {
-    let [counter, setCounter] = useState<number>(props.startValue)
+    const [counter, setCounter] = useState<number>(0)
 
-//====================  логика кнопак Inc + Reset===========================
+    useEffect(() => {
+        setCounter(props.startValue);
+    },[props.startValue])
+
+//====================  логика кнопок Inc + Reset===========================
     const inc = () => {
-        setCounter(Number(counter) + 1)
+        setCounter(counter + 1)
 
     }
     const reset = () => {
-        setCounter(counter = props.startValue)
-        localStorage.clear()
+        setCounter(props.startValue)
     }
 //============================== Логика Disabled кнопок ==================
     const changeDisableReset = () => counter === props.startValue
@@ -27,16 +30,13 @@ const Counter = (props: CounterPropsType) => {
 
     const changeDisableInC = () => counter >= props.maxValue
     const IncButtonDisable = changeDisableInC();
-// ==========================           ========================
-
-
 
 //====================== JSX ===================
 
     return (
         <div className={"MainBox"}>
 
-            <CounterNumber counter={counter} maxValue = {props.maxValue}/>
+            <CounterNumber counter={counter} maxValue={props.maxValue}/>
 
             <div className={"ButtonBox"}>
 

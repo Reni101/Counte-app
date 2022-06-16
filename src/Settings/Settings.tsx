@@ -10,28 +10,32 @@ type SettingsPropsType = {
 }
 
 const Settings = (props: SettingsPropsType) => {
+
+
     const onChangeHandlerMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValue(e.currentTarget.value)
+        props.setMaxValue(+e.currentTarget.value)
     }
     const onChangeHandlerStartValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setStartValue(e.currentTarget.value)
+
+        props.setStartValue(+e.currentTarget.value)
     }
+
     //===================Error логика==============
     const ErrorStyleStartValue = () => {
-        if (props.startValue < 0 || +props.startValue > +props.maxValue) {
+        if (props.startValue < 0 || +props.startValue >= +props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
     const InputStyleSV = ErrorStyleStartValue()
 
     const ErrorStyleMaxValue = () => {
-        if (props.maxValue < 0 || +props.startValue > +props.maxValue ) {
+        if (props.maxValue < 0 || +props.startValue >= +props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
-    const InputStyleMV =ErrorStyleMaxValue()
+    const InputStyleMV = ErrorStyleMaxValue()
 
-    const disable = props.startValue < 0 || props.maxValue < 0 || +props.startValue > +props.maxValue;
+    const disable = props.startValue < 0 || props.maxValue < 0 || props.startValue >= props.maxValue;
 
     //=======================================================
 

@@ -68,6 +68,10 @@
     padding-top: 15px;
 
 }
+.ValueString input {
+    text-align: center;
+
+}
 .ValueString {
     display: flex;
     margin: 5px;
@@ -75,10 +79,14 @@
 
 }
 
+
+
 .InputNumber {
     width: 50px;
     height: 15px;
 }
 .InputNumberError {
-    background-color:rgba(255, 0, 0, 0.5);
+    background-color:rgba(255, 0, 0, 0.8);
+
+    font-weight: bold;
 }
