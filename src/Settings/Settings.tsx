@@ -22,7 +22,7 @@ const Settings = (props: SettingsPropsType) => {
 
     //===================Error логика==============
     const ErrorStyleStartValue = () => {
-        if (props.startValue < 0 || +props.startValue >= +props.maxValue) {
+        if (props.startValue < 0 || props.startValue >= props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
