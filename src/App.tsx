@@ -30,16 +30,6 @@ function App() {
         localStorage.setItem("StartValue", JSON.stringify(startValue))
 
     }
-    /*    const GetLocalS = () => {
-            let getMaxValue = localStorage.getItem("MaxValue")
-            let getStartValue = localStorage.getItem("StartValue")
-            if (getMaxValue && getStartValue) {
-                setStartValue(JSON.parse(getStartValue))
-                setMaxValue(JSON.parse(getMaxValue))
-
-            }
-        }*/
-
 
     return (
         <>
