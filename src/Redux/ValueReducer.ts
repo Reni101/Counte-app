@@ -17,7 +17,7 @@ type initialState = {
 
 const initialState: initialState = {
     startValue: 0,
-    maxValue: 1,
+    maxValue: 2,
     isSetting:true,
 }
 export const ValueReducer = (state =initialState, action: AllActions): initialState => {

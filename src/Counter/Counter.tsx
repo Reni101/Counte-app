@@ -10,11 +10,13 @@ type CounterPropsType = {
 }
 
 const Counter = (props: CounterPropsType) => {
-    const [counter, setCounter] = useState<number>(0)
+    const [counter, setCounter] = useState<number>(props.startValue)
 
+/*
     useEffect(() => {
         setCounter(props.startValue);
     }, [props.startValue])
+*/
 
 //====================  логика кнопок Inc + Reset===========================
     const inc = () => {

@@ -1,23 +1,26 @@
 import React, {ChangeEvent} from 'react';
 import UniversalButton from "../Counter/CounterButton/UniversalButton";
+import {useDispatch} from "react-redux";
+import {changeMaxValueAC, changeStartValueAC} from "../Redux/ValueReducer";
 
 type SettingsPropsType = {
-    changeSet: (isSetting:boolean) => void
-  //  setStartValue: (a: number) => void
+    changeSet: (isSetting: boolean) => void
     startValue: number
     maxValue: number
-  //  setMaxValue: (a: number) => void
+
 }
 
 const Settings = (props: SettingsPropsType) => {
-
+    const dispatch = useDispatch()
 
     const onChangeHandlerMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-     //   props.setMaxValue(+e.currentTarget.value)
+        dispatch(changeMaxValueAC(+e.currentTarget.value))
+
     }
     const onChangeHandlerStartValue = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(changeStartValueAC(+e.currentTarget.value))
 
-     //   props.setStartValue(+e.currentTarget.value)
+
     }
 
     //===================Error логика==============

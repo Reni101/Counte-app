@@ -11,19 +11,6 @@ export default AppWidthRedux;
 
 function AppWidthRedux() {
 
-    /*    const [changeSetting, setChangeSetting] = useState<boolean>(true)
-      const [startValue, setStartValue] = useState<number>(0)
-       const [maxValue, setMaxValue] = useState<number>(1)*/
-
-/*    useEffect(() => {
-        let getMaxValue = localStorage.getItem("MaxValue")
-        let getStartValue = localStorage.getItem("StartValue")
-        if (getMaxValue && getStartValue) {
-            setMaxValue(JSON.parse(getMaxValue))
-            setStartValue(JSON.parse(getStartValue))
-        }
-    }, [])*/
-
     const changeSetting = useSelector<AppRootStateType, boolean >(state => state.counterValue.isSetting)
     const startValue = useSelector<AppRootStateType, number>(state => state.counterValue.startValue)
     const maxValue = useSelector<AppRootStateType, number>(state => state.counterValue.maxValue)
@@ -32,9 +19,6 @@ function AppWidthRedux() {
     //===================== логика смены компонент + сетает в localstorage ============
     const changeSet = (isSetting:boolean) => {
     dispatch(changeSettingAC(isSetting))
-      /*  setChangeSetting(!changeSetting)
-        localStorage.setItem("MaxValue", JSON.stringify(maxValue))
-        localStorage.setItem("StartValue", JSON.stringify(startValue))*/
 
     }
 
@@ -46,10 +30,9 @@ function AppWidthRedux() {
                          maxValue={maxValue}
 
                 /> : <Settings changeSet={changeSet}
-                              // setStartValue={setStartValue}
                                startValue={startValue}
                                maxValue={maxValue}
-                             //  setMaxValue={setMaxValue}
+
                 />}
         </>
     );
