@@ -2,8 +2,6 @@ type changeStartValyeActionType = ReturnType<typeof changeStartValueAC>
 type changeMaxValueActionType = ReturnType<typeof changeMaxValueAC>
 type changeSettingActionType = ReturnType<typeof changeSettingAC>
 
-
-
 type AllActions = changeStartValyeActionType
     | changeMaxValueActionType
     |changeSettingActionType
@@ -53,7 +51,8 @@ export const changeStartValueAC = (startValue: number) => {
     } as const
 
 }
-export const changeMaxValueAC = (maxValue: number) => {
+export const changeMaxValueAC = (maxValue: number) =>
+{
     return {
         type: 'CHANGE-MAX-VALUE',
         maxValue
