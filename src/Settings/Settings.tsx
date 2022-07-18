@@ -29,7 +29,7 @@ const Settings = (props: SettingsPropsType) => {
     const InputStyleSV = ErrorStyleStartValue()
 
     const ErrorStyleMaxValue = () => {
-        if (props.maxValue < 0 || +props.startValue >= +props.maxValue) {
+        if (props.maxValue < 0 || props.startValue >= props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
