@@ -7,7 +7,7 @@ type CounterNumberPropsType = {
 }
 
 const CounterNumber = (props: CounterNumberPropsType) => {
-debugger
+
     const NumberClass = props.counter < props.maxValue ? "NumberBox" : "NumberBox NumberBoxDisable";
     return (
         <div className={NumberClass}>

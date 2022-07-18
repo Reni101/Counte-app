@@ -8,7 +8,7 @@ export default App;
 
 function App() {
 
-    const [changeSetting, setChangeSetting] = useState<boolean>(true)
+  /*  const [changeSetting, setChangeSetting] = useState<boolean>(true)
     const [startValue, setStartValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(1)
 
@@ -43,5 +43,5 @@ function App() {
                                setMaxValue={setMaxValue}
                 />}
         </>
-    );
+    );*/
 }

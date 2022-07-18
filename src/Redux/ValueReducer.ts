@@ -21,6 +21,7 @@ const initialState: initialState = {
     isSetting:true,
 }
 export const ValueReducer = (state =initialState, action: AllActions): initialState => {
+
     switch (action.type) {
         case 'CHANGE-START-VALUE': {
             return {

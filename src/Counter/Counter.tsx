@@ -4,7 +4,7 @@ import UniversalButton from "./CounterButton/UniversalButton";
 
 
 type CounterPropsType = {
-    changeSet: () => void
+    changeSet: (isSetting: boolean) => void
     startValue: number
     maxValue: number
 }
@@ -14,7 +14,7 @@ const Counter = (props: CounterPropsType) => {
 
     useEffect(() => {
         setCounter(props.startValue);
-    },[props.startValue])
+    }, [props.startValue])
 
 //====================  логика кнопок Inc + Reset===========================
     const inc = () => {
@@ -31,7 +31,15 @@ const Counter = (props: CounterPropsType) => {
     const changeDisableInC = () => counter >= props.maxValue
     const IncButtonDisable = changeDisableInC();
 
+
+//======================Callback================
+    const callbackisSetting = () => {
+        props.changeSet(false)
+
+    }
+
 //====================== JSX ===================
+
 
     return (
         <div className={"MainBox"}>
@@ -54,7 +62,7 @@ const Counter = (props: CounterPropsType) => {
                 />
 
                 <UniversalButton
-                    callback={props.changeSet}
+                    callback={callbackisSetting}
                     title={"set"}
                     Disable={false}
                 />

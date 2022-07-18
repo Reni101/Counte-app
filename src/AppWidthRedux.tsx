@@ -4,6 +4,7 @@ import Counter from "./Counter/Counter";
 import Settings from "./Settings/Settings";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./Redux/Store";
+import {changeSettingAC} from "./Redux/ValueReducer";
 
 
 export default AppWidthRedux;
@@ -30,10 +31,10 @@ function AppWidthRedux() {
 
     //===================== логика смены компонент + сетает в localstorage ============
     const changeSet = (isSetting:boolean) => {
-
-        setChangeSetting(!changeSetting)
+    dispatch(changeSettingAC(isSetting))
+      /*  setChangeSetting(!changeSetting)
         localStorage.setItem("MaxValue", JSON.stringify(maxValue))
-        localStorage.setItem("StartValue", JSON.stringify(startValue))
+        localStorage.setItem("StartValue", JSON.stringify(startValue))*/
 
     }
 
@@ -45,10 +46,10 @@ function AppWidthRedux() {
                          maxValue={maxValue}
 
                 /> : <Settings changeSet={changeSet}
-                               setStartValue={setStartValue}
+                              // setStartValue={setStartValue}
                                startValue={startValue}
                                maxValue={maxValue}
-                               setMaxValue={setMaxValue}
+                             //  setMaxValue={setMaxValue}
                 />}
         </>
     );

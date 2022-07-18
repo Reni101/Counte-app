@@ -2,22 +2,22 @@ import React, {ChangeEvent} from 'react';
 import UniversalButton from "../Counter/CounterButton/UniversalButton";
 
 type SettingsPropsType = {
-    changeSet: () => void
-    setStartValue: (a: any) => void
+    changeSet: (isSetting:boolean) => void
+  //  setStartValue: (a: number) => void
     startValue: number
     maxValue: number
-    setMaxValue: (a: any) => void
+  //  setMaxValue: (a: number) => void
 }
 
 const Settings = (props: SettingsPropsType) => {
 
 
     const onChangeHandlerMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValue(+e.currentTarget.value)
+     //   props.setMaxValue(+e.currentTarget.value)
     }
     const onChangeHandlerStartValue = (e: ChangeEvent<HTMLInputElement>) => {
 
-        props.setStartValue(+e.currentTarget.value)
+     //   props.setStartValue(+e.currentTarget.value)
     }
 
     //===================Error логика==============
@@ -37,6 +37,12 @@ const Settings = (props: SettingsPropsType) => {
 
     const disable = props.startValue < 0 || props.maxValue < 0 || props.startValue >= props.maxValue;
 
+
+    //======================Callback================
+    const callbackisSetting = () => {
+        props.changeSet(true)
+
+    }
     //=======================================================
 
     return (
@@ -61,7 +67,7 @@ const Settings = (props: SettingsPropsType) => {
 
             </div>
             <div className={"ButtonBox"}>
-                <UniversalButton title="set" callback={props.changeSet} Disable={disable}/>
+                <UniversalButton title="set" callback={callbackisSetting} Disable={disable}/>
             </div>
 
         </div>
