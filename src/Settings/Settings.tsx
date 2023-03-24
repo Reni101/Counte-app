@@ -15,38 +15,30 @@ const Settings = (props: SettingsPropsType) => {
 
     const onChangeHandlerMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(changeMaxValueAC(+e.currentTarget.value))
-
     }
+
     const onChangeHandlerStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(changeStartValueAC(+e.currentTarget.value))
-
-
     }
 
-    //===================Error логика==============
-    const ErrorStyleStartValue = () => {
+    const errorStyleStartValue = () => {
         if (props.startValue < 0 || props.startValue >= props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
-    const InputStyleSV = ErrorStyleStartValue()
 
-    const ErrorStyleMaxValue = () => {
+    const errorStyleMaxValue = () => {
         if (props.maxValue < 0 || props.startValue >= props.maxValue) {
             return "InputNumber + InputNumberError"
         } else return "InputNumber"
     }
-    const InputStyleMV = ErrorStyleMaxValue()
 
     const disable = props.startValue < 0 || props.maxValue < 0 || props.startValue >= props.maxValue;
 
-
-    //======================Callback================
-    const callbackisSetting = () => {
+    const callbackIsSetting = () => {
         props.changeSet(true)
 
     }
-    //=======================================================
 
     return (
         <div className={"SettingsMainBox"}>
@@ -54,7 +46,7 @@ const Settings = (props: SettingsPropsType) => {
 
                 <div className={"ValueString"}>
                     <span>Max value</span>
-                    <input className={InputStyleMV}
+                    <input className={errorStyleMaxValue()}
                            type="number"
                            onChange={onChangeHandlerMaxValue}
                            value={props.maxValue}/>
@@ -62,7 +54,7 @@ const Settings = (props: SettingsPropsType) => {
 
                 <div className={"ValueString "}>
                     <span> Start value</span>
-                    <input className={InputStyleSV}
+                    <input className={errorStyleStartValue()}
                            type="number"
                            onChange={onChangeHandlerStartValue}
                            value={props.startValue}/>
@@ -70,7 +62,7 @@ const Settings = (props: SettingsPropsType) => {
 
             </div>
             <div className={"ButtonBox"}>
-                <UniversalButton title="set" callback={callbackisSetting} Disable={disable}/>
+                <UniversalButton title="set" callback={callbackIsSetting} Disable={disable}/>
             </div>
 
         </div>

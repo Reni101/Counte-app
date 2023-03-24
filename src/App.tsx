@@ -1,31 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import Counter from "./Counter/Counter";
 import Settings from "./Settings/Settings";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./Redux/Store";
+import {changeSettingAC} from "./Redux/ValueReducer";
 
 
 export default App;
 
 function App() {
+    const dispatch = useDispatch()
 
-  /*  const [changeSetting, setChangeSetting] = useState<boolean>(true)
-    const [startValue, setStartValue] = useState<number>(0)
-    const [maxValue, setMaxValue] = useState<number>(1)
+    const changeSetting = useSelector<AppRootStateType, boolean >(state => state.counterValue.isSetting)
+    const currentValue = useSelector<AppRootStateType, number>(state => state.counterValue.currentValuer)
+    const startValue = useSelector<AppRootStateType, number>(state => state.counterValue.startValue)
+    const maxValue = useSelector<AppRootStateType, number>(state => state.counterValue.maxValue)
 
-    useEffect(() => {
-        let getMaxValue = localStorage.getItem("MaxValue")
-        let getStartValue = localStorage.getItem("StartValue")
-        if (getMaxValue && getStartValue) {
-            setMaxValue(JSON.parse(getMaxValue))
-            setStartValue(JSON.parse(getStartValue))
-        }
-    }, [])
-
-    //===================== логика смены компонент + сетает в localstorage ============
-    const changeSet = () => {
-        setChangeSetting(!changeSetting)
-        localStorage.setItem("MaxValue", JSON.stringify(maxValue))
-        localStorage.setItem("StartValue", JSON.stringify(startValue))
+    const changeSet = (isSetting:boolean) => {
+    dispatch(changeSettingAC(isSetting))
 
     }
 
@@ -35,13 +28,13 @@ function App() {
                 <Counter changeSet={changeSet}
                          startValue={startValue}
                          maxValue={maxValue}
+                         currentValue={currentValue}
 
                 /> : <Settings changeSet={changeSet}
-                               setStartValue={setStartValue}
                                startValue={startValue}
                                maxValue={maxValue}
-                               setMaxValue={setMaxValue}
+
                 />}
         </>
-    );*/
+    );
 }

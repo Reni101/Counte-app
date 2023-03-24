@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AppWidthRedux from "./AppWidthRedux";
 import {Provider} from "react-redux";
 import {store} from "./Redux/Store";
 
@@ -12,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <Provider store={store}>
-    <AppWidthRedux/>
+    <App/>
     </Provider>
 );
 

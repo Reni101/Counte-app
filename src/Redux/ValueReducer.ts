@@ -1,48 +1,37 @@
-type changeStartValyeActionType = ReturnType<typeof changeStartValueAC>
-type changeMaxValueActionType = ReturnType<typeof changeMaxValueAC>
-type changeSettingActionType = ReturnType<typeof changeSettingAC>
-
-type AllActions = changeStartValyeActionType
-    | changeMaxValueActionType
-    |changeSettingActionType
+type AllActions =
+    | ReturnType<typeof changeStartValueAC>
+    | ReturnType<typeof changeMaxValueAC>
+    | ReturnType<typeof changeSettingAC>
+    | ReturnType<typeof changeCurrentValueAC>
 
 
-type initialState = {
+export type initValueState = {
+    currentValuer: number
     startValue: number
     maxValue: number
-    isSetting:boolean
+    isSetting: boolean
 }
 
-const initialState: initialState = {
+const initialState: initValueState = {
+    currentValuer: 0,
     startValue: 0,
     maxValue: 2,
-    isSetting:true,
+    isSetting: true,
 }
-export const ValueReducer = (state =initialState, action: AllActions): initialState => {
-
+export const valueReducer = (state = initialState, action: AllActions) => {
     switch (action.type) {
-        case 'CHANGE-START-VALUE': {
-            return {
-                ...state, startValue: action.startValue
-            }
-
-
-        }
-        case 'CHANGE-MAX-VALUE': {
-            return {
-                ...state, maxValue: action.maxValue
-            }
-        }
-        case 'CHANGE-SETTING': {
-            return {
-                ...state, isSetting:action.isSetting
-            }
-        }
+        case 'CHANGE-START-VALUE':
+            return {...state, startValue: action.startValue,currentValuer:action.startValue}
+        case 'CHANGE-MAX-VALUE':
+            return {...state, maxValue: action.maxValue}
+        case 'CHANGE-SETTING':
+            return {...state, isSetting: action.isSetting}
+        case "CHANGE-CURRENT-VALUE":
+            return {...state, currentValuer: action.value}
         default:
             return state
     }
 };
-
 
 export const changeStartValueAC = (startValue: number) => {
     return {
@@ -51,8 +40,7 @@ export const changeStartValueAC = (startValue: number) => {
     } as const
 
 }
-export const changeMaxValueAC = (maxValue: number) =>
-{
+export const changeMaxValueAC = (maxValue: number) => {
     return {
         type: 'CHANGE-MAX-VALUE',
         maxValue
@@ -63,5 +51,11 @@ export const changeSettingAC = (isSetting: boolean) => {
     return {
         type: 'CHANGE-SETTING',
         isSetting
+    } as const
+}
+export const changeCurrentValueAC = (value: number) => {
+    return {
+        type: 'CHANGE-CURRENT-VALUE',
+        value
     } as const
 }

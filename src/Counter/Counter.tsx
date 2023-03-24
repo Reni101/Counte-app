@@ -1,65 +1,50 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import CounterNumber from "./CounterNumber/CounterNumber";
 import UniversalButton from "./CounterButton/UniversalButton";
+import {useDispatch} from "react-redux";
+import {changeCurrentValueAC} from "../Redux/ValueReducer";
 
 
 type CounterPropsType = {
     changeSet: (isSetting: boolean) => void
     startValue: number
     maxValue: number
+    currentValue: number
 }
 
-const Counter = (props: CounterPropsType) => {
-    const [counter, setCounter] = useState<number>(props.startValue)
+const Counter: React.FC<CounterPropsType> = ({currentValue, startValue, maxValue, changeSet}) => {
+    const dispatch = useDispatch()
 
-/*
-    useEffect(() => {
-        setCounter(props.startValue);
-    }, [props.startValue])
-*/
-
-//====================  логика кнопок Inc + Reset===========================
-    const inc = () => {
-        setCounter(counter + 1)
+    const incHandler = () => {
+        dispatch(changeCurrentValueAC(currentValue + 1))
 
     }
-    const reset = () => {
-        setCounter(props.startValue)
+
+    const resetHandler = () => {
+        dispatch(changeCurrentValueAC(startValue))
     }
-//============================== Логика Disabled кнопок ==================
-    const changeDisableReset = () => counter === props.startValue
-    const ResetButtonDisable = changeDisableReset()
 
-    const changeDisableInC = () => counter >= props.maxValue
-    const IncButtonDisable = changeDisableInC();
-
-
-//======================Callback================
     const callbackisSetting = () => {
-        props.changeSet(false)
-
+        changeSet(false)
     }
-
-//====================== JSX ===================
-
 
     return (
         <div className={"MainBox"}>
 
-            <CounterNumber counter={counter} maxValue={props.maxValue}/>
+            <CounterNumber counter={currentValue} maxValue={maxValue}/>
 
             <div className={"ButtonBox"}>
 
                 <UniversalButton
-                    callback={inc}
+                    callback={incHandler}
                     title={"inc"}
-                    Disable={IncButtonDisable}
+                    Disable={currentValue >= maxValue}
                 />
 
                 <UniversalButton
-                    callback={reset}
+                    callback={resetHandler}
                     title={"reset"}
-                    Disable={ResetButtonDisable}
+                    Disable={startValue === currentValue}
 
                 />
 
