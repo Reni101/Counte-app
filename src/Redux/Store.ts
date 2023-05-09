@@ -3,14 +3,11 @@ import {valueReducer} from "./ValueReducer";
 import {loadState, saveState} from "../Utils/localstorage-utils";
 
 
-const persistedState = loadState();
-
 const rootReducer = combineReducers({
     counterValue: valueReducer
-
 })
 
-export const store = legacy_createStore(rootReducer, persistedState)
+export const store = legacy_createStore(rootReducer, loadState())
 
 store.subscribe(() => {
     saveState({

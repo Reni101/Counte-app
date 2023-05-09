@@ -12,12 +12,12 @@ type CounterPropsType = {
     currentValue: number
 }
 
-const Counter: React.FC<CounterPropsType> = ({currentValue, startValue, maxValue, changeSet}) => {
+const Counter: React.FC<CounterPropsType> =
+    ({currentValue, startValue, maxValue, changeSet}) => {
     const dispatch = useDispatch()
 
     const incHandler = () => {
         dispatch(changeCurrentValueAC(currentValue + 1))
-
     }
 
     const resetHandler = () => {
@@ -34,7 +34,7 @@ const Counter: React.FC<CounterPropsType> = ({currentValue, startValue, maxValue
             <CounterNumber counter={currentValue} maxValue={maxValue}/>
 
             <div className={"ButtonBox"}>
-
+111
                 <UniversalButton
                     callback={incHandler}
                     title={"inc"}
